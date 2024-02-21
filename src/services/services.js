@@ -5,7 +5,7 @@ import axios from "axios"
 export async function register(user_details){
 
     const options = {
-        url : 'http://localhost:2323/player/register',
+        url : `${process.env.NEXT_PUBLIC_BASE_URL}/player/register`,
         method : 'post',
         data : user_details
     }
@@ -22,7 +22,7 @@ export async function register(user_details){
 export async function login(user_details){
 
     const options = {
-        url : 'http://localhost:2323/player/login',
+        url : `${process.env.NEXT_PUBLIC_BASE_URL}/player/login`,
         method : 'post',
         data : user_details
     }
@@ -35,7 +35,7 @@ export async function login(user_details){
 
 export async function getCards(count){
     const options = {
-        url : count ? `http://localhost:2323/cards/${count}` : `http://localhost:2323/cards`,
+        url : count ? `${process.env.NEXT_PUBLIC_BASE_URL}/${count}` : `${process.env.NEXT_PUBLIC_BASE_URL}/cards`,
         method : 'get',
     }
 
@@ -46,7 +46,7 @@ export async function getCards(count){
 export async function updateScore(score,token){
 
     const options = {
-        url : `http://localhost:2323/player/score/update`,
+        url : `${process.env.NEXT_PUBLIC_BASE_URL}/player/score/update`,
         method : 'post',
         data : {
           score : Number(score)
@@ -63,7 +63,7 @@ export async function updateScore(score,token){
 export async function getLeaderBoard(token){
 
     const options = {
-        url : `http://localhost:2323/leaderboard`,
+        url : `${process.env.NEXT_PUBLIC_BASE_URL}/leaderboard`,
         method : 'get',
         headers:{
             authorization : token
