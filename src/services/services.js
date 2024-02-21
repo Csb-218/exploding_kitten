@@ -35,11 +35,12 @@ export async function login(user_details){
 
 export async function getCards(count){
     const options = {
-        url : count ? `${process.env.NEXT_PUBLIC_BASE_URL}/${count}` : `${process.env.NEXT_PUBLIC_BASE_URL}/cards`,
+        url : count ? `${process.env.NEXT_PUBLIC_BASE_URL}/cards/${count}` : `${process.env.NEXT_PUBLIC_BASE_URL}/cards`,
         method : 'get',
     }
 
     const res = await axios.request(options)
+    console.log(res)
     return res
 }
 

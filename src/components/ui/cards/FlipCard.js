@@ -39,16 +39,17 @@ const FlipCard = ({ card }) => {
       <div className="flip-card" >
         <div className={show?"flip-card-inner" :""} >
           <div className="flip-card-front">
-            <p className="title">FLIP CARD</p>
-            <p>Hover Me</p>
+            <p className="title">FLIP ME</p>
+            {/* <p>Hover Me</p> */}
           </div>
           <div className="flip-card-back ">
-            <p className="title">{card?.cardId}</p>
+            <p className="title">{card?.card}</p>
             <Image
               src={(card?.card === 'cat' && '/cool.svg') || (card?.card === 'shuffle' && '/shuffle.svg') || (card?.card === 'bomb' && '/bomb.svg') || (card?.card === 'defuse' && '/no-signboard.svg') ||''}
               height={100}
               width={100}
               alt=""
+              className='mx-8'
             />
 
           </div>
