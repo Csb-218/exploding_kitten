@@ -2,8 +2,9 @@ import React from 'react'
 import { useFormik } from 'formik'
 import * as Yup from "yup"
 import Link from 'next/link'
+import Dots from '../loaders/Dots'
 
-const LoginForm = ({Login}) => {
+const LoginForm = ({ Login, isLoading }) => {
 
     const initialValues = {
         email: "",
@@ -15,7 +16,7 @@ const LoginForm = ({Login}) => {
         password: Yup?.string()
     })
 
-    const onSubmit = async(values) => {
+    const onSubmit = async (values) => {
         Login(values)
     }
 
@@ -107,7 +108,7 @@ const LoginForm = ({Login}) => {
                                 </defs>
                             </svg>
                         </div>
-                        <form onSubmit={formik?.handleSubmit}>
+                        <form onSubmit={formik?.handleSubmit} >
                             <div className="mt-5">
 
                                 <label
@@ -121,6 +122,7 @@ const LoginForm = ({Login}) => {
                                     id="email"
                                     name='email'
                                     onChange={formik?.handleChange}
+                                    disabled={isLoading}
                                 />
                                 <label
                                     className="font-semibold text-sm text-gray-400 pb-1 block"
@@ -133,6 +135,7 @@ const LoginForm = ({Login}) => {
                                     type="password"
                                     id="password"
                                     onChange={formik?.handleChange}
+                                    disabled={isLoading}
                                 />
 
 
@@ -239,19 +242,29 @@ const LoginForm = ({Login}) => {
                                 </div>
                             </div>
                             <div className="mt-5">
-                                <button
-                                    className="py-2 px-4 bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
-                                    type="submit"
-                                >
-                                    Log in
-                                </button>
+                                {
+                                    isLoading ? 
+                                    <div className="flex flex-col  items-center ">
+                                        <p className="text-xs p-2">This will take max 30-40 sec.</p>
+                                        <Dots />
+                                    </div>
+
+                                        :
+                                        <button
+                                        className="py-2 px-4 bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
+                                        type="submit"
+                                    >
+                                        Log in
+                                    </button>
+                                }
+
                             </div>
                             <div className="flex items-center justify-between mt-4">
                                 <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
                                 <Link
                                     className="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline"
-                                    href="/authenticate/register"
-                                >or sign up</Link>
+                                    href="/authenticate/register" >
+                                    or sign up</Link>
                                 <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
                             </div>
                         </form>

@@ -2,8 +2,9 @@ import {useState} from 'react'
 import { useFormik } from 'formik'
 import * as Yup from "yup"
 import Link from 'next/link'
+import Dots from '../loaders/Dots'
 
-const SignUpForm = ({ SignUp }) => {
+const SignUpForm = ({ SignUp , isLoading}) => {
 
     const [show,setShow]=useState(false)
 
@@ -127,6 +128,7 @@ const SignUpForm = ({ SignUp }) => {
                                     type="text"
                                     id="name"
                                     onChange={formik?.handleChange}
+                                    disabled={isLoading}
                                 />
 
                                 <label
@@ -140,6 +142,7 @@ const SignUpForm = ({ SignUp }) => {
                                     id="email"
                                     name='email'
                                     onChange={formik?.handleChange}
+                                    disabled={isLoading}
                                 />
                                 <label
                                     className="font-semibold text-sm text-gray-400 pb-1 block"
@@ -155,6 +158,7 @@ const SignUpForm = ({ SignUp }) => {
                                     type={show?"text":"password"}
                                     id="password"
                                     onChange={formik?.handleChange}
+                                    disabled={isLoading}
                                 />
 
 
@@ -262,13 +266,22 @@ const SignUpForm = ({ SignUp }) => {
                                 </div>
                             </div>
                             <div className="mt-5">
-
-                                <button
+                                {
+                                    isLoading ? 
+                                    <div className="flex flex-col  items-center ">
+                                        <p className="text-xs p-2">This will take max 30-40 sec.</p>
+                                        <Dots />
+                                    </div>
+                                    :
+                                    <button
                                     className="py-2 px-4 bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
                                     type="submit"
-                                >
+                                     >
                                     Sign up
                                 </button>
+                                }
+
+                                
                             </div>
                             <div className="flex items-center justify-between mt-4">
                                 <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
