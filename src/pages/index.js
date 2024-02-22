@@ -102,10 +102,6 @@ export default function Home() {
 
 
   useEffect(() => {
-    if (firstRender) {
-      firstRender = false
-      return
-    }
 
     LoadCards()
 
