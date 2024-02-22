@@ -7,10 +7,15 @@ export function middleware(request) {
 
     const { pathname } = request.nextUrl
 
+    //console.log(pathname)
 
     if(!token){
 
-        if(pathname === '/authenticate/login'){
+        if(pathname === '/authenticate/login' ){
+
+            return NextResponse.next()
+        }
+        if(pathname === '/authenticate/register' ){
 
             return NextResponse.next()
         }

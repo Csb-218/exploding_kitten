@@ -21,7 +21,7 @@ const SignUpForm = ({ SignUp , isLoading}) => {
     })
 
     const onSubmit = async (values) => {
-        console.log(values)
+        //console.log(values)
         SignUp(values)
     }
 

@@ -26,7 +26,7 @@ export default function Home() {
     mutationKey: ['key'],
     mutationFn: () => getCards(),
     onSuccess: (data) => {
-      console.log(data?.data)
+      //console.log(data?.data)
       dispatch(cardActions.store({ cards: data?.data?.cards }))
     }
   })
@@ -35,7 +35,7 @@ export default function Home() {
     mutationKey: ['add'],
     mutationFn: (count) => getCards(count),
     onSuccess: (data) => {
-      console.log(data?.data)
+      //console.log(data?.data)
       dispatch(cardActions.addCards({ cards: data?.data?.cards }))
     }
   })
@@ -44,8 +44,8 @@ export default function Home() {
     mutationKey: ['update'],
     mutationFn: () => updateScore(100, token),
     onSuccess: () => {
-      console.log(data?.data)
-      console.log('score updated !')
+      //console.log(data?.data)
+      //console.log('score updated !')
     }
   })
 
@@ -85,7 +85,7 @@ export default function Home() {
         }
         else {
           const newCards = 5 - deck?.length
-          console.log(newCards)
+          //console.log(newCards)
           AddCards(newCards)
         }
 

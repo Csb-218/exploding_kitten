@@ -20,15 +20,15 @@ export async function register(user_details){
 
 
 export async function login(user_details){
-
+  
     const options = {
         url : `${process.env.NEXT_PUBLIC_BASE_URL}/player/login`,
         method : 'post',
         data : user_details
     }
-
+    //console.log(990,`${process.env.NEXT_PUBLIC_BASE_URL}`)
     const res = await axios.request(options)
-
+    //console.log(res)
     return res
 
 }
@@ -40,7 +40,7 @@ export async function getCards(count){
     }
 
     const res = await axios.request(options)
-    console.log(res)
+    //console.log(res)
     return res
 }
 
@@ -72,6 +72,6 @@ export async function getLeaderBoard(token){
     }
 
     const res = await axios.request(options)
-    console.log(res)
+    //console.log(res)
     return res
 }

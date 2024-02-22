@@ -17,7 +17,7 @@ const CardSlice = createSlice({
         flip(state,action){
 
           const pickedCard = action.payload.card
-          console.log( pickedCard )
+          //console.log( pickedCard )
           state.PickedCard =  pickedCard 
 
           pickedCard && state.flipCount++
@@ -26,7 +26,7 @@ const CardSlice = createSlice({
 
         store(state,action){
             const cards = action.payload.cards
-            console.log(cards)
+            //console.log(cards)
 
             
             if(cards){
@@ -48,7 +48,7 @@ const CardSlice = createSlice({
 
         addCards(state,action){
             const cards = action.payload.cards
-            console.log(cards)
+            //console.log(cards)
 
             if(cards){
                 cards?.forEach((card,index) =>{
@@ -72,7 +72,7 @@ const CardSlice = createSlice({
             // const toBeRemoved = state.deck?.find(item=>card === item)
 
             const filteredArray = state.deck?.filter(item => item?.cardId !== cardId )
-            console.log(card,cardId,filteredArray)
+            //console.log(card,cardId,filteredArray)
             state.deck = [...filteredArray]
             // state.cardsFlipped.splice(state.cardsFlipped.indexOf(state.PickedCard),1)
             state.toggleDiffuse = false
@@ -83,7 +83,7 @@ const CardSlice = createSlice({
 
 
                 const toBeRemoved = state.deck?.find(item =>{ return (item['card'] ==='bomb')})
-                console.log(toBeRemoved)
+                //console.log(toBeRemoved)
                 const filteredArray = state.deck?.filter(item => item !== toBeRemoved )
                 // state.deck.splice(state.deck.indexOf(toBeRemoved),1)
                 state.deck = [...filteredArray]

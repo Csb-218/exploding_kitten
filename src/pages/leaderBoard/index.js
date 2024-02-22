@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 
 const cookie = new Cookies()
 const token = cookie.get("token")
-console.log(token)
+//console.log(token)
 
 const LeaderBoard = () => {
 
@@ -20,7 +20,7 @@ const LeaderBoard = () => {
     enabled: !!token
   })
 
-  console.log(results)
+  //console.log(results)
 
   return (
     <>

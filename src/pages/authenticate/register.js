@@ -13,17 +13,17 @@ const Register = () => {
 
     const dispatch = useDispatch();
 
-    const { mutate: SignUp } = useMutation({
+    const { mutate: SignUp , isLoading} = useMutation({
         // mutationKey:["login"],
         mutationFn: (user_details) => register(user_details),
         onSuccess: (res) => {
-            console.log(res?.data)
+            //console.log(res?.data)
             // dispatch(authActions?.login({ token }))
             router?.replace('/authenticate/login')
         }
     })
     return (
-        <SignUpForm SignUp={SignUp} />
+        <SignUpForm SignUp={SignUp} isLoading={isLoading}/>
     )
 }
 

@@ -13,18 +13,25 @@ const Login = () => {
 
   const router = useRouter();
 
-  const {mutate:Login} = useMutation({
+  const {mutate:Login,isLoading} = useMutation({
       // mutationKey:["login"],
-      mutationFn:(user_details)=>login(user_details),
+      mutationFn:(user_details)=>{
+        //console.log(user_details)
+        return login(user_details)
+      }
+        ,
       onSuccess:(res)=>{
           const token = res?.data?.token
-          console.log(token)
+          //console.log(token)
           dispatch(authActions?.login({token}))
           router?.replace('/')
+      },
+      onError:(err)=>{
+        //console.log(err)
       }
   })
   return (
-    <LoginForm Login={Login}/>
+    <LoginForm Login={Login} isLoading={isLoading}/>
   )
 }
 
